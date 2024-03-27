@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Echo'){
+            steps {
+                echo "Hi bangaluru"
+            }
+        }
+        stage('continue ?') {
+            input {
+                message "Should we continue?"       // ask user permission before STEP execution
+                ok "Yes we should"
+            }
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}   

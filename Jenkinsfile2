@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    stages{
+        stage('Build'){
+            steps{
+                // steps to build your application
+                sh 'mvn clean package'
+            }
+        }
+    }
+    stage('Test'){
+        steps{
+            // steps to run test
+            sh 'mvn test'
+        }
+    }
+    stage('Deploy'){
+        steps{
+            // steps to deploy your application
+            sh 'scp target/myapp.war user@example.com:/path/to/deployment/'
+        }
+    }
+}
+post{
+    success{
+        // Action to perform when pipeline suceedes
+        echo "pipeline succedes!!"
+    }
+    failure{
+        // Action to be perform when pipeline is failes
+        echo "pipeline failure!!"
+    }
+}

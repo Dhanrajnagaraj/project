@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    environment {
+        name = 'kiran'
+        age  = '28'
+    }
+    parameters {
+        string(name: 'person', defaultValue: 'KIRAN', description: 'Who are you')                     //string parameter
+        booleanParam(name: 'is Male', defaultValue: 'ture', description: '')                          //boolean parameter
+        choice(name: 'City', choices: ['Belagavi','bangalore','Mysore', 'hassan'], description: '')   //choice parameter
+    }
+
+    stages {
+        stage('Parameters') {
+            steps {
+                sh 'echo "${person}"'
+            }
+        }
+    }
+}

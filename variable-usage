@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    environment {
+        name = 'kiran'
+        age  = '28'
+    }
+    stages {
+        stage('Envi Variables') {
+            steps {
+              sh 'echo "${BUILD_ID}"'   // jenkins envi variables
+              sh 'echo "${name}"'       //user defined variables 
+              sh 'echo "${age}"'
+            }
+        }
+        stage('Variable to pericular stage') {
+             environment {                               // adding variables to perticular stage
+                    name1 = 'shri'
+                }
+            steps {
+                sh 'echo "${name1}"'
+                sh 'echo "${name}"'
+            }
+        }
+    }
+}

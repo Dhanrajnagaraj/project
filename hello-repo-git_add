@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('remove') {
+            steps {
+                sh "rm -rf dhanraj"
+            }
+        }
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('create') {
+            steps {
+               sh "mkdir dhanraj"
+            }
+        }
+         stage('git start') {
+            steps {
+               sh "git init"
+            }
+        }
+        
+        stage('git add') {
+            steps {
+               sh "git add dhanraj"
+            }
+        }
+    }
+}
